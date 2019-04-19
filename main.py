@@ -89,7 +89,7 @@ def cascading_tasks_varied_agent_ability(num_tasks):
         if agent1_busy == False:#do work
             agent1_busy = True
             sum = 0
-            for i in range(400):
+            for i in range(400000):
                 sum += 1
             tasks_completed = tasks_completed + sum
             if tasks_completed >= num_tasks: break
@@ -97,7 +97,7 @@ def cascading_tasks_varied_agent_ability(num_tasks):
         if agent2_busy == False:#do work
             agent2_busy = True
             sum = 0
-            for i in range(500):
+            for i in range(100000):
                 sum += 1
             tasks_completed = tasks_completed + sum
             if tasks_completed >= num_tasks: break
@@ -105,7 +105,7 @@ def cascading_tasks_varied_agent_ability(num_tasks):
         if agent3_busy == False:
             agent3_busy = True
             sum = 0
-            for i in range(200):
+            for i in range(500000):
                 sum += 1
             tasks_completed = tasks_completed + sum
             if tasks_completed >= num_tasks: break
