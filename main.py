@@ -117,22 +117,24 @@ def cascading_tasks_varied_agent_ability(num_tasks):
     elapsed_time = time.time() - start_time
     print("Cascading tasks with varied agent ability: ", elapsed_time)
 
+
 def agents_and_tasks_with_type():
+    start_time = time.time()
     agents = {1: "type A",
               2: "type B",
               3: "type A",
               4: "type C"}
 
-    A_tasks = {1: 100,
-             2: 250,
-             3: 50}
-    B_tasks = {1: 200,
-             2: 50,
-             3: 350}
+    A_tasks = {1: 1000,
+             2: 5000,
+             3: 5500}
+    B_tasks = {1: 2000,
+             2: 1000,
+             3: 3500}
 
-    C_tasks = {1: 210,
-             2: 500,
-             3: 75}
+    C_tasks = {1: 2100,
+             2: 800,
+             3: 7500}
 
     a_tasks = 0
     b_tasks = 0
@@ -140,22 +142,25 @@ def agents_and_tasks_with_type():
     for agent in agents:
         if agents[agent] == 'type A':
             for task in A_tasks:
-                a_tasks += A_tasks[task]
+                for i in range(A_tasks[task]):
+                    a_tasks += 1
 
         elif agents[agent] == 'type B':
-            # b_tasks = 0
             for task in B_tasks:
-                b_tasks += B_tasks[task]
-        elif agents[agent] == 'type C':
-            # c_tasks = 0
-            for task in C_tasks:
-                c_tasks += C_tasks[task]
+                for i in range(B_tasks[task]):
+                    b_tasks += 1
 
-    print("a_tasks: ", a_tasks, " b_tasks: ", b_tasks, " c_tasks: ", c_tasks)
+        elif agents[agent] == 'type C':
+            for task in C_tasks:
+                for i in range(C_tasks[task]):
+                    c_tasks += 1
+
+    elapsed_time = time.time() - start_time
+    print("Agents and tasks with type: ", elapsed_time)
 
 if __name__ =='__main__':
-    # one_agent(1000000)
-    # multiple_agents(3, 1000000)
-    # cascading_tasks(3, 1000000)
-    # cascading_tasks_varied_agent_ability(1000000)
+    one_agent(1000000)
+    multiple_agents(3, 1000000)
+    cascading_tasks(3, 1000000)
+    cascading_tasks_varied_agent_ability(1000000)
     agents_and_tasks_with_type()
