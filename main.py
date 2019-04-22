@@ -1,9 +1,8 @@
 ####################
 #CS 5110 Final project
+#Krista Gurney, Janelle Miller
 
-#possible ideas
-#task allocation
-import time
+import time, random
 
 def one_agent(num_tasks):
     start_time = time.time()
@@ -125,16 +124,17 @@ def agents_and_tasks_with_type():
               3: "type A",
               4: "type C"}
 
-    A_tasks = {1: 310000,
-             2: 4000,
+    A_tasks = {1: 250000,
+             2: 10000,
              3: 30000}
-    B_tasks = {1: 300000,
-             2: 3000,
-             3: 41000}
 
-    C_tasks = {1: 300000,
+    B_tasks = {1: 90000,
+             2: 250000,
+             3: 10000}
+
+    C_tasks = {1: 86000,
              2: 24000,
-             3: 20000}
+             3: 250000}
 
     a_tasks = 0
     b_tasks = 0
@@ -158,9 +158,83 @@ def agents_and_tasks_with_type():
     elapsed_time = time.time() - start_time
     print("Agents and tasks with type: ", elapsed_time)
 
+def agents_with_utility_and_task_type_random(num_tasks):
+    #Randomly assigns
+
+    agents = {1: "A", 2: "B", 3: "C", 4: "D"}
+    utility = {'A': 0, 'B': 0, 'C': 0, 'D':0 }
+
+    taskTypes = ['A', 'B', 'C', 'D']
+    tasks = []
+    currentTask = 0
+    work = 0
+
+    for i in range(num_tasks):
+        tasks.append(random.choice(taskTypes))
+
+    start_time = time.time()
+
+    while currentTask < num_tasks:
+
+        for agent in agents:
+            if agents[agent] == tasks[currentTask]:
+                utility[agents.get(agent)] += 1
+            currentTask += 1
+            work += 1
+
+    elapsed_time = time.time() - start_time
+    print("Randomly allocating tasks with type to agents with utility: ", elapsed_time)
+    print("\tAgent A's Utility: ", utility['A'], "\tAgent B's Utility: ", utility['B'])
+    print("\tAgent C's Utility: ", utility['C'], "\tAgent D's Utility: ", utility['D'],'\n')
+
+def agents_with_utility_and_task_type_centralized(num_tasks):
+    #Randomly assigns
+
+    agents = {1: "A", 2: "B", 3: "C", 4: "D"}
+    utility = {'A': 0, 'B': 0, 'C': 0, 'D':0 }
+
+    taskTypes = ['A', 'B', 'C', 'D']
+    tasks = []
+    currentTask = 0
+
+    work = 0
+
+    for i in range(num_tasks):
+        tasks.append(random.choice(taskTypes))
+
+    start_time = time.time()
+
+    for task in tasks:
+        if task == 'A':
+            utility['A'] += 1
+            work += 1
+        elif task == 'B':
+            utility['B'] += 1
+            work += 1
+        elif task == 'C':
+            utility['C'] += 1
+            work += 1
+        elif task == 'D':
+            utility['D'] += 1
+            work += 1
+
+    elapsed_time = time.time() - start_time
+    print("Allocating preferred tasks with type to agents with utility: ", elapsed_time)
+    print("\tAgent A's Utility: ", utility['A'], "\tAgent B's Utility: ", utility['B'])
+    print("\tAgent C's Utility: ", utility['C'], "\tAgent D's Utility: ", utility['D'],'\n')
+
+def agents_in_coalitions():
+    # TODO
+    start_time = time.time()
+
+
+
 if __name__ =='__main__':
-    one_agent(1000000)
-    multiple_agents(3, 1000000)
-    cascading_tasks(3, 1000000)
-    cascading_tasks_varied_agent_ability(1000000)
+    TASKS = 1000000
+    one_agent(TASKS)
+    multiple_agents(3, TASKS)
+    cascading_tasks(3, TASKS)
+    cascading_tasks_varied_agent_ability(TASKS)
     agents_and_tasks_with_type()
+    agents_with_utility_and_task_type_random(TASKS)
+    agents_with_utility_and_task_type_centralized(TASKS)
