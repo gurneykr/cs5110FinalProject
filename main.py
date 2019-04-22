@@ -118,6 +118,7 @@ def cascading_tasks_varied_agent_ability(num_tasks):
 
 
 def agents_and_tasks_with_type():
+    #example of emergency response problem
     start_time = time.time()
     agents = {1: "type A",
               2: "type B",
@@ -183,7 +184,7 @@ def agents_with_utility_and_task_type_random(num_tasks):
             work += 1
 
     elapsed_time = time.time() - start_time
-    print("Randomly allocating tasks with type to agents with utility: ", elapsed_time)
+    print("\nRandomly allocating tasks with type to agents with utility: ", elapsed_time)
     print("\tAgent A's Utility: ", utility['A'], "\tAgent B's Utility: ", utility['B'])
     print("\tAgent C's Utility: ", utility['C'], "\tAgent D's Utility: ", utility['D'],'\n')
 
