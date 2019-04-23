@@ -196,7 +196,6 @@ def agents_with_utility_and_task_type_centralized(num_tasks):
 
     taskTypes = ['A', 'B', 'C', 'D']
     tasks = []
-    currentTask = 0
 
     work = 0
 
@@ -205,29 +204,25 @@ def agents_with_utility_and_task_type_centralized(num_tasks):
 
     start_time = time.time()
 
-    for task in tasks:
-        if task == 'A':
-            utility['A'] += 1
-            work += 1
-        elif task == 'B':
-            utility['B'] += 1
-            work += 1
-        elif task == 'C':
-            utility['C'] += 1
-            work += 1
-        elif task == 'D':
-            utility['D'] += 1
-            work += 1
+    while work < num_tasks:
+        for task in tasks:
+            if task == 'A':
+                utility['A'] += 1
+                work += 1
+            elif task == 'B':
+                utility['B'] += 1
+                work += 1
+            elif task == 'C':
+                utility['C'] += 1
+                work += 1
+            elif task == 'D':
+                utility['D'] += 1
+                work += 1
 
     elapsed_time = time.time() - start_time
     print("Allocating preferred tasks with type to agents with utility: ", elapsed_time)
     print("\tAgent A's Utility: ", utility['A'], "\tAgent B's Utility: ", utility['B'])
     print("\tAgent C's Utility: ", utility['C'], "\tAgent D's Utility: ", utility['D'],'\n')
-
-def agents_in_coalitions():
-    # TODO
-    start_time = time.time()
-
 
 
 if __name__ =='__main__':
